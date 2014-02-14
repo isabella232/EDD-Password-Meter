@@ -2,10 +2,9 @@
 /**
  * Scripts
  *
- * @package		Easy Digital Downloads - Password Meter
- * @subpackage	Scripts
- * @copyright	Copyright (c) 2013, Daniel J Griffiths
+ * @package		EDD\PasswordMeter\Scripts
  * @since		1.0.0
+ * @copyright	Copyright (c) 2013-2014, Daniel J Griffiths
  */
 
 
@@ -20,8 +19,9 @@ if( !defined( 'ABSPATH' ) ) exit;
  * @return		void
  */
 function edd_password_meter_load_scripts() {
-	if( edd_is_checkout() )
+	if( edd_is_checkout() ) {
 		wp_enqueue_script( 'edd_password_meter_passfield_js', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/js/passfield.min.js', array( 'jquery' ) );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
 
@@ -33,8 +33,9 @@ add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
  * @return		void
  */
 function edd_password_meter_register_styles() {
-	if( edd_is_checkout() )
+	if( edd_is_checkout() ) {
 		wp_enqueue_style( 'edd_password_meter_passfield_css', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/css/passfield.min.css' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_register_styles' );
 
