@@ -101,7 +101,7 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
 
 			// Handle licensing
 			if( class_exists( 'EDD_License' ) ) {
-				$license = new EDD_License( __FILE__, 'Password Meter', EDD_PASSWORD_METER_VERSION, 'Daniel J Griffiths' );
+				$license = new EDD_License( __FILE__, 'Password Meter', EDD_PASSWORD_METER_PLUGIN_VER, 'Daniel J Griffiths' );
 			}
 
 			// Add error check
@@ -118,8 +118,8 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
 		 */
 		public static function load_textdomain() {
 			// Set filter for languages directory
-			$edd_lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
-			$edd_lang_dir = apply_filters( 'EDD_Password_Meter_languages_directory', $edd_lang_dir );
+			$lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+			$lang_dir = apply_filters( 'EDD_Password_Meter_languages_directory', $lang_dir );
 			
 			// Traditional WordPress plugin locale filter
 			$locale		= apply_filters( 'plugin_locale', get_locale(), '' );
