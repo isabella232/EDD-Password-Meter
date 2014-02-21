@@ -2,9 +2,9 @@
 /**
  * Scripts
  *
- * @package		EDD\PasswordMeter\Scripts
- * @since		1.0.0
- * @copyright	Copyright (c) 2013-2014, Daniel J Griffiths
+ * @package     EDD\PasswordMeter\Scripts
+ * @since       1.0.0
+ * @copyright   Copyright (c) 2013-2014, Daniel J Griffiths
  */
 
 
@@ -15,13 +15,13 @@ if( !defined( 'ABSPATH' ) ) exit;
 /**
  * Load scripts
  *
- * @since		1.0.0
- * @return		void
+ * @since       1.0.0
+ * @return      void
  */
 function edd_password_meter_load_scripts() {
-	if( edd_is_checkout() ) {
-		wp_enqueue_script( 'edd_password_meter_passfield_js', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/js/passfield.min.js', array( 'jquery' ) );
-	}
+    if( edd_is_checkout() ) {
+        wp_enqueue_script( 'edd_password_meter_passfield_js', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/js/passfield.min.js', array( 'jquery' ) );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
 
@@ -29,13 +29,13 @@ add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
 /**
  * Register styles
  *
- * @since		1.0.0
- * @return		void
+ * @since       1.0.0
+ * @return      void
  */
 function edd_password_meter_register_styles() {
-	if( edd_is_checkout() ) {
-		wp_enqueue_style( 'edd_password_meter_passfield_css', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/css/passfield.min.css' );
-	}
+    if( edd_is_checkout() ) {
+        wp_enqueue_style( 'edd_password_meter_passfield_css', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/css/passfield.min.css' );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_register_styles' );
 
@@ -43,12 +43,12 @@ add_action( 'wp_enqueue_scripts', 'edd_password_meter_register_styles' );
 /**
  * Add password meter
  *
- * @since		1.0.0
- * @global		$edd_options
- * @return		void
+ * @since       1.0.0
+ * @global      $edd_options
+ * @return      void
  */
 function edd_display_password_meter() {
-	global $edd_options;
+    global $edd_options;
 
 ?>
 <script>
@@ -58,12 +58,12 @@ jQuery(document).ready(function () {
             echo ( isset( $edd_options['edd_password_meter_hide_toggle'] ) ? '        showToggle: false,' : '' );
             echo ( isset( $edd_options['edd_password_meter_hide_gen'] ) ? '        showGenerate: false,' : '' );
             echo ( isset( $edd_options['edd_password_meter_hide_tooltip'] ) ? '        showTip: false,' : '' );
-			if( isset( $edd_options['edd_password_meter_strength'] ) && is_numeric( $edd_options['edd_password_meter_strength'] ) && $edd_options['edd_password_meter_strength'] >= 0 && $edd_options['edd_password_meter_strength'] <= 1 )
+            if( isset( $edd_options['edd_password_meter_strength'] ) && is_numeric( $edd_options['edd_password_meter_strength'] ) && $edd_options['edd_password_meter_strength'] >= 0 && $edd_options['edd_password_meter_strength'] <= 1 )
                 echo '        acceptRate: ' . $edd_options['edd_password_meter_strength'];
         ?>
     },
         PassField.CheckModes.<?php echo ( isset( $edd_options['edd_password_meter_checkmode'] ) ? $edd_options['edd_password_meter_checkmode'] : 'STRICT' ); ?>
-	);
+    );
     jQuery('body').on('blur', '#edd_user_pass', function () {
         if(jQuery('#edd_user_pass').getPassValidationMessage() !== undefined && jQuery('#edd_invalid_password_strength').length === 0) {
             jQuery('#edd-user-pass-wrap').append('<input type="hidden" value="1" id="edd_invalid_password_strength" name="edd_invalid_password_strength" />');
