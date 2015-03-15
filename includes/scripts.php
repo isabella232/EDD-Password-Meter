@@ -20,7 +20,7 @@ if( !defined( 'ABSPATH' ) ) exit;
  */
 function edd_password_meter_load_scripts() {
     if( edd_is_checkout() ) {
-        wp_enqueue_script( 'edd_password_meter_passfield_js', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/js/passfield.min.js', array( 'jquery' ) );
+        wp_enqueue_script( 'edd_password_meter_passfield_js', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/js/passfield.js', array( 'jquery' ) );
     }
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
