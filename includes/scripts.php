@@ -20,8 +20,11 @@ if( !defined( 'ABSPATH' ) ) exit;
  */
 function edd_password_meter_load_scripts() {
     if( edd_is_checkout() ) {
-        wp_enqueue_script( 'edd_password_meter_passfield_js', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/js/passfield.js', array( 'jquery' ) );
-        wp_enqueue_style( 'edd_password_meter_passfield_css', EDD_PASSWORD_METER_PLUGIN_URL . 'assets/css/passfield.min.css' );
+        wp_enqueue_script( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/js/passfield.js', array( 'jquery' ), EDD_PASSWORD_METER_VER );
+        wp_enqueue_style( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/css/passfield.min.css', array(), EDD_PASSWORD_METER_VER );
+        wp_enqueue_script( 'edd-password-meter', EDD_PASSWORD_METER_URL . 'assets/js/edd-password-meter.js', array( 'edd-password-meter-passfield' ), EDD_PASSWORD_METER_VER );
+        wp_localize_script( 'edd-password-meter', 'edd_password_meter_vars', array(
+        ) );
     }
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );

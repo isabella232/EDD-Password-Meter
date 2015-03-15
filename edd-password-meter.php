@@ -62,13 +62,13 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
          */
         public function setup_constants() {
             // Plugin path
-            define( 'EDD_PASSWORD_METER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+            define( 'EDD_PASSWORD_METER_DIR', plugin_dir_path( __FILE__ ) );
 
             // Plugin URL
-            define( 'EDD_PASSWORD_METER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+            define( 'EDD_PASSWORD_METER_URL', plugin_dir_url( __FILE__ ) );
 
             // Plugin version
-            define( 'EDD_PASSWORD_METER_PLUGIN_VER', '1.1.0' );
+            define( 'EDD_PASSWORD_METER_VER', '1.1.0' );
         }
 
 
@@ -81,7 +81,7 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
          */
         private function includes() {
             // Include scripts
-            require_once( EDD_PASSWORD_METER_PLUGIN_DIR . 'includes/scripts.php' );
+            require_once( EDD_PASSWORD_METER_DIR . 'includes/scripts.php' );
         }
 
 
@@ -98,7 +98,7 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
 
             // Handle licensing
             if( class_exists( 'EDD_License' ) ) {
-                $license = new EDD_License( __FILE__, 'Password Meter', EDD_PASSWORD_METER_PLUGIN_VER, 'Daniel J Griffiths' );
+                $license = new EDD_License( __FILE__, 'Password Meter', EDD_PASSWORD_METER_VER, 'Daniel J Griffiths' );
             }
 
             // Add error check
