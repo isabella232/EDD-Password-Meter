@@ -229,6 +229,8 @@ function EDD_Password_Meter_load() {
 
         $activation = new S214_EDD_Activation( plugin_dir_path( __FILE__ ), basename( __FILE__ ) );
         $activation = $activation->run();
+
+        return EDD_Password_Meter::instance();
     } else {
         return EDD_Password_Meter::instance();
     }
