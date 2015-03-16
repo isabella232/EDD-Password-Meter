@@ -2,7 +2,7 @@
 jQuery(document).ready(function ($) {
     'use strict';
 
-    var show_toggle, show_generate, show_tip, checkmode = edd_password_meter_vars.checkmode;
+    var show_toggle, show_generate, show_tip;
 
     if (edd_password_meter_vars.show_toggle === '1') {
         show_toggle = true;
@@ -27,6 +27,28 @@ jQuery(document).ready(function ($) {
         showGenerate: show_generate,
         showTip: show_tip,
         acceptRate: edd_password_meter_vars.strength,
-        checkmode: edd_password_meter_vars.checkmode,
+        checkmode: edd_password_meter_vars.checkmode
+    });
+
+    $('body').on('blur', '#edd_user_pass', function () {
+        if ($('#edd_user_pass').getPassValidationMessage() !== undefined && $('#edd_invalid_password_strength').length === 0) {
+            $('#edd-user-pass-wrap').append('<input type="hidden" value="1" id="edd_invalid_password_strength" name="edd_invalid_password_strength" />');
+        } else if ($('#edd_user_pass').getPassValidationMessage() === undefined) {
+            $('#edd_invalid_password_strength').remove();
+        }
+
+        if ($('#edd_user_pass').val() === $('#edd_user_pass_confirm').val()) {
+            $('#edd_user_pass_confirm_warn').remove();
+        }
+    });
+
+    $('body').on('blur', '#edd_user_pass_confirm', function () {
+        if ($('#edd_user_pass').val() !== $('#edd_user_pass_confirm').val()) {
+            if ($('#edd_user_pass_confirm_warn').length === 0) {
+                $('<div class="a_pf-wrap"><div id="edd_user_pass_confirm_warn" class="a_pf-warn help-inline" title="' + edd_password_meter_vars.match_error + '" style="margin: 0px 0px 0px 3px;">' + edd_password_meter_vars.match_error + '</div></div>').insertAfter('#edd_user_pass_confirm');
+            }
+        } else {
+            $('#edd_user_pass_confirm_warn').remove();
+        }
     });
 });
