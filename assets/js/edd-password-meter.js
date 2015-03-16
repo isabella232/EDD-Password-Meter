@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
     } else {
         show_tip = false;
     }
-
+    
     $('#edd_user_pass').passField({
         showToggle: show_toggle,
         showGenerate: show_generate,
