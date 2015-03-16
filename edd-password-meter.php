@@ -170,7 +170,10 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
                     'id'    => 'edd_password_meter_strength',
                     'name'  => __( 'Required Strength', 'edd_password_meter' ),
                     'desc'  => __( 'Set the minimum required password strength Min: 0, Max: 1, Default: 0.8', 'edd_password_meter' ),
-                    'type'  => 'text',
+                    'type'  => 'number',
+                    'min'   => '0',
+                    'max'   => '1',
+                    'step'  => '0.1',
                     'size'  => 'small',
                     'std'   => '0.8'
                 ),
