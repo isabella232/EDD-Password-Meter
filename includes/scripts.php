@@ -32,4 +32,4 @@ function edd_password_meter_load_scripts() {
         'match_error'   => __( 'passwords do not match!', 'edd-password-meter' )
     ) );
 }
-add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
+add_action( 'edd_after_purchase_form', 'edd_password_meter_load_scripts' );
