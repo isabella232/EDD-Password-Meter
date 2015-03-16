@@ -19,13 +19,17 @@ if( !defined( 'ABSPATH' ) ) exit;
  * @return      void
  */
 function edd_password_meter_load_scripts() {
-    if( edd_is_checkout() ) {
-        wp_enqueue_script( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/js/passfield.js', array( 'jquery' ), EDD_PASSWORD_METER_VER );
-        wp_enqueue_style( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/css/passfield.min.css', array(), EDD_PASSWORD_METER_VER );
-        wp_enqueue_script( 'edd-password-meter', EDD_PASSWORD_METER_URL . 'assets/js/edd-password-meter.js', array( 'edd-password-meter-passfield' ), EDD_PASSWORD_METER_VER );
-        wp_localize_script( 'edd-password-meter', 'edd_password_meter_vars', array(
-        ) );
-    }
+    wp_enqueue_script( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/js/passfield/js/passfield.js', array( 'jquery' ), EDD_PASSWORD_METER_VER );
+    wp_enqueue_script( 'edd-password-meter-passfield-locales', EDD_PASSWORD_METER_URL . 'assets/js/passfield/js/locales.js', array( 'edd-password-meter-passfield' ), EDD_PASSWORD_METER_VER );
+    wp_enqueue_style( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/js/passfield/css/passfield.css', array(), EDD_PASSWORD_METER_VER );
+    wp_enqueue_script( 'edd-password-meter', EDD_PASSWORD_METER_URL . 'assets/js/edd-password-meter.js', array( 'edd-password-meter-passfield' ), EDD_PASSWORD_METER_VER );
+    wp_localize_script( 'edd-password-meter', 'edd_password_meter_vars', array(
+        'show_toggle'   => ( edd_get_option( 'edd_password_meter_hide_toggle', false ) ? false : true ),
+        'show_generate' => ( edd_get_option( 'edd_password_meter_hide_gen', false ) ? false : true ),
+        'show_tooltip'  => ( edd_get_option( 'edd_password_meter_hide_tooltip', false ) ? false : true ),
+        'strength'      => edd_get_option( 'edd_password_meter_strength', 0.8 ),
+        'checkmode'     => edd_get_option( 'edd_password_meter_checkmode', 'STRICT' )        
+    ) );
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
 
@@ -77,4 +81,4 @@ jQuery(document).ready(function () {
 </script>
 <?php
 }
-add_action( 'edd_after_purchase_form', 'edd_display_password_meter' );
+//add_action( 'edd_after_purchase_form', 'edd_display_password_meter' );
