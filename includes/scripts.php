@@ -19,6 +19,15 @@ if( !defined( 'ABSPATH' ) ) exit;
  * @return      void
  */
 function edd_password_meter_load_scripts() {
+    $min_length = edd_get_option( 'edd_password_meter_min_length', 8 );
+    $max_length = edd_get_option( 'edd_password_meter_max_length', 16 );
+
+    if( $min_length > $max_length ) {
+        $held = $max_length;
+        $max_length = $min_length;
+        $min_length = $held;
+    }
+
     wp_enqueue_script( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/js/passfield/js/passfield.js', array( 'jquery' ), EDD_PASSWORD_METER_VER );
     wp_enqueue_script( 'edd-password-meter-passfield-locales', EDD_PASSWORD_METER_URL . 'assets/js/passfield/js/locales.js', array( 'edd-password-meter-passfield' ), EDD_PASSWORD_METER_VER );
     wp_enqueue_style( 'edd-password-meter-passfield', EDD_PASSWORD_METER_URL . 'assets/js/passfield/css/passfield.css', array(), EDD_PASSWORD_METER_VER );
@@ -29,7 +38,9 @@ function edd_password_meter_load_scripts() {
         'show_tooltip'  => ( edd_get_option( 'edd_password_meter_hide_tooltip', false ) ? false : true ),
         'strength'      => edd_get_option( 'edd_password_meter_strength', 0.8 ),
         'checkmode'     => edd_get_option( 'edd_password_meter_checkmode', 'STRICT' ),
-        'match_error'   => __( 'passwords do not match!', 'edd-password-meter' )
+        'match_error'   => __( 'passwords do not match!', 'edd-password-meter' ),
+        'min_length'    => $min_length,
+        'max_length'    => $max_length
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
@@ -42,6 +53,15 @@ add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
  * @return      void
  */
 function edd_password_meter_add_to_ajax() {
+    $min_length = edd_get_option( 'edd_password_meter_min_length', 8 );
+    $max_length = edd_get_option( 'edd_password_meter_max_length', 16 );
+
+    if( $min_length > $max_length ) {
+        $held = $max_length;
+        $max_length = $min_length;
+        $min_length = $held;
+    }
+
     $html = '<script type="text/javascript">
 jQuery(\'#edd_user_pass\').passField({
     showToggle: ' . ( edd_get_option( 'edd_password_meter_hide_toggle', false ) ? false : true ) . ',
@@ -49,6 +69,10 @@ jQuery(\'#edd_user_pass\').passField({
     showTip: ' . ( edd_get_option( 'edd_password_meter_hide_tooltip', false ) ? false : true ) . ',
     acceptRate: ' . edd_get_option( 'edd_password_meter_strength', 0.8 ) . ',
     checkmode: ' . edd_get_option( 'edd_password_meter_checkmode', 'STRICT' ) . '
+    length: {
+        min: ' . $min_length . ',
+        max: ' . $max_length . '
+    }
 });
 </script>';
 

@@ -28,7 +28,11 @@ jQuery(document).ready(function ($) {
         showGenerate: show_generate,
         showTip: show_tip,
         acceptRate: edd_password_meter_vars.strength,
-        checkmode: edd_password_meter_vars.checkmode
+        checkmode: edd_password_meter_vars.checkmode,
+        length: {
+            min: edd_password_meter_vars.min_length,
+            max: edd_password_meter_vars.max_length
+        }
     });
 
     $('body').on('blur', '#edd_user_pass', function () {
@@ -59,7 +63,11 @@ jQuery(document).ready(function ($) {
         showGenerate: show_generate,
         showTip: show_tip,
         acceptRate: edd_password_meter_vars.strength,
-        checkmode: edd_password_meter_vars.checkmode
+        checkmode: edd_password_meter_vars.checkmode,
+        length: {
+            min: edd_password_meter_vars.min_length,
+            max: edd_password_meter_vars.max_length
+        }
     });
     
     $('body').on('blur', '#edd-user-pass', function () {

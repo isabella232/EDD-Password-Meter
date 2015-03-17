@@ -178,6 +178,26 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
                     'std'   => '0.8'
                 ),
                 array(
+                    'id'    => 'edd_password_meter_min_length',
+                    'name'  => __( 'Minimum Length', 'edd_password_meter' ),
+                    'desc'  => __( 'Set the minimum allowed password length Default: 8', 'edd_password_meter' ),
+                    'type'  => 'number',
+                    'min'   => '0',
+                    'step'  => '1',
+                    'size'  => 'small',
+                    'std'   => '8'
+                ),
+                array(
+                    'id'    => 'edd_password_meter_max_length',
+                    'name'  => __( 'Maximum Length', 'edd_password_meter' ),
+                    'desc'  => __( 'Set the maximum allowed password length Default: 16', 'edd_password_meter' ),
+                    'type'  => 'number',
+                    'min'   => '0',
+                    'step'  => '1',
+                    'size'  => 'small',
+                    'std'   => '16'
+                ),
+                array(
                     'id'    => 'edd_password_meter_hide_toggle',
                     'name'  => __( 'Disallow Show Password', 'edd_password_meter' ),
                     'desc'  => __( 'Select to disable the \'show password\' toggle', 'edd_password_meter' ),
