@@ -22,19 +22,6 @@ jQuery(document).ready(function ($) {
         show_tip = false;
     }
     
-    // Checkout registration form - non AJAX
-    $('#edd_user_pass').passField({
-        showToggle: show_toggle,
-        showGenerate: show_generate,
-        showTip: show_tip,
-        acceptRate: edd_password_meter_vars.strength,
-        checkmode: edd_password_meter_vars.checkmode,
-        length: {
-            min: edd_password_meter_vars.min_length,
-            max: edd_password_meter_vars.max_length
-        }
-    });
-
     $('body').on('blur', '#edd_user_pass', function () {
         if ($('#edd_user_pass').getPassValidationMessage() !== undefined && $('#edd_invalid_password_strength').length === 0) {
             $('#edd-user-pass-wrap').append('<input type="hidden" value="1" id="edd_invalid_password_strength" name="edd_invalid_password_strength" />');

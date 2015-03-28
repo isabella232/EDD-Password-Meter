@@ -47,14 +47,15 @@ add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
 
 
 /**
- * Add Password Meter on AJAX cart
+ * Add Password Meter on cart
  *
  * @since       1.1.1
  * @return      void
  */
-function edd_password_meter_add_to_ajax() {
+function edd_password_meter_add_to_cart() {
     $min_length = edd_get_option( 'edd_password_meter_min_length', 8 );
     $max_length = edd_get_option( 'edd_password_meter_max_length', 16 );
+    $checkmode  = edd_get_option( 'edd_password_meter_checkmode', 'STRICT' );
 
     if( $min_length > $max_length ) {
         $held = $max_length;
@@ -62,13 +63,19 @@ function edd_password_meter_add_to_ajax() {
         $min_length = $held;
     }
 
+    if( $checkmode == 'STRICT' ) {
+        $checkmode = 'PassField.CheckModes.STRICT';
+    } else {
+        $checkmode = 'PassField.CheckModes.MODERATE';
+    }
+
     $html = '<script type="text/javascript">
 jQuery(\'#edd_user_pass\').passField({
-    showToggle: ' . ( edd_get_option( 'edd_password_meter_hide_toggle', false ) ? false : true ) . ',
-    showGenerate: ' . ( edd_get_option( 'edd_password_meter_hide_gen', false ) ? false : true ) . ',
-    showTip: ' . ( edd_get_option( 'edd_password_meter_hide_tooltip', false ) ? false : true ) . ',
+    showToggle: ' . ( edd_get_option( 'edd_password_meter_hide_toggle', false ) ? 'false' : 'true' ) . ',
+    showGenerate: ' . ( edd_get_option( 'edd_password_meter_hide_gen', false ) ? 'false' : 'true' ) . ',
+    showTip: ' . ( edd_get_option( 'edd_password_meter_hide_tooltip', false ) ? 'false' : 'true' ) . ',
     acceptRate: ' . edd_get_option( 'edd_password_meter_strength', 0.8 ) . ',
-    checkmode: ' . edd_get_option( 'edd_password_meter_checkmode', 'STRICT' ) . '
+    checkmode: ' . $checkmode . ',
     length: {
         min: ' . $min_length . ',
         max: ' . $max_length . '
@@ -78,4 +85,4 @@ jQuery(\'#edd_user_pass\').passField({
 
     echo $html;
 }
-add_action( 'edd_after_purchase_form', 'edd_password_meter_add_to_ajax' );
+add_action( 'edd_after_purchase_form', 'edd_password_meter_add_to_cart' );
