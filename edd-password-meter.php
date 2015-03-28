@@ -3,7 +3,7 @@
  * Plugin Name:     Easy Digital Downloads - Password Meter
  * Plugin URI:      https://easydigitaldownloads.com/extension/password-meter/
  * Description:     Adds a password strength meter to the integrated signup form
- * Version:         1.1.1
+ * Version:         1.1.2
  * Author:          Daniel J Griffiths
  * Author URI:      http://section214.com
  * Text Domain:     edd-password-meter
@@ -68,7 +68,7 @@ if( !class_exists( 'EDD_Password_Meter' ) ) {
             define( 'EDD_PASSWORD_METER_URL', plugin_dir_url( __FILE__ ) );
 
             // Plugin version
-            define( 'EDD_PASSWORD_METER_VER', '1.1.1' );
+            define( 'EDD_PASSWORD_METER_VER', '1.1.2' );
         }
 
 
