@@ -154,7 +154,7 @@ if( ! class_exists( 'EDD_Password_Meter' ) ) {
 		 */
 		public function error_check() {
 			if( ! empty( $_POST['edd_invalid_password_strength'] ) ) {
-				edd_set_error( 'edd_invalid_password_strength', __( 'Your password is insecure. Please enter a stronger password.', 'edd_password_meter' ) );
+				edd_set_error( 'edd_invalid_password_strength', __( 'Your password is insecure. Please enter a stronger password.', 'edd-password-meter' ) );
 			}
 		}
 	}

@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
     } else {
         show_tip = false;
     }
-    
+
     $('body').on('blur', '#edd_user_pass', function () {
         if ($('#edd_user_pass').getPassValidationMessage() !== undefined && $('#edd_invalid_password_strength').length === 0) {
             $('#edd-user-pass-wrap').append('<input type="hidden" value="1" id="edd_invalid_password_strength" name="edd_invalid_password_strength" />');
@@ -43,7 +43,7 @@ jQuery(document).ready(function ($) {
             $('#edd_user_pass_confirm_warn').remove();
         }
     });
-    
+
     // Shortcode registration form
     $('#edd-user-pass').passField({
         showToggle: show_toggle,
@@ -56,7 +56,7 @@ jQuery(document).ready(function ($) {
             max: edd_password_meter_vars.max_length
         }
     });
-    
+
     $('body').on('blur', '#edd-user-pass', function () {
         if ($('#edd-user-pass').getPassValidationMessage() !== undefined && $('#edd_invalid_password_strength').length === 0) {
             $('#edd-user-pass').closest('p').append('<input type="hidden" value="1" id="edd_invalid_password_strength" name="edd_invalid_password_strength" />');
