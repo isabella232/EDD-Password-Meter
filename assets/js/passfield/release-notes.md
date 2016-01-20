@@ -1,5 +1,17 @@
 Release notes
 -------------
+##### v1.1.13 (2015-08-09)
+`+` Translation to Dutch/Nederlands (thanks to VincentNikkelen)
+
+##### v1.1.12 (2015-05-31)
+`-` fixed Bootstrap 3 input-groups bug
+
+##### v1.1.11 (2015-05-21)
+`+` Bootstrap 3 input-groups support (thanks to migliori)
+
+##### v1.1.10 (2015-04-16)
+Bower package
+
 ##### v1.1.9 (2014-09-01)
 New feature  
 `+` ability to customize mask button (thanks to siberex)  
