@@ -44,6 +44,7 @@ function edd_password_meter_load_scripts() {
 		'min_length'    => $min_length,
 		'max_length'    => $max_length
 	) );
+	wp_enqueue_style( 'edd-password-meter', EDD_PASSWORD_METER_URL . 'assets/css/edd-password-meter.css', array(), EDD_PASSWORD_METER_VER );
 }
 add_action( 'wp_enqueue_scripts', 'edd_password_meter_load_scripts' );
 
