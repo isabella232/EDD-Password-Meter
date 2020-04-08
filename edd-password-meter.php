@@ -4,13 +4,13 @@
  * Plugin URI:      https://easydigitaldownloads.com/extension/password-meter/
  * Description:     Adds a password strength meter to the integrated signup form
  * Version:         1.2.1
- * Author:          Daniel J Griffiths
- * Author URI:      http://section214.com
+ * Author:          Sandhills Development, LLC
+ * Author URI:      https://sandhillsdev.com
  * Text Domain:     edd-password-meter
  *
  * @package         EDD\PasswordMeter
- * @author          Daniel J Griffiths <dgriffiths@section214.com>
- * @copyright       Copyright (c) 2013-2014, Daniel J Griffiths
+ * @author          Sandhills Development, LLC
+ * @copyright       Copyright (c) 2020, Sandhills Development, LLC
  */
 
 
